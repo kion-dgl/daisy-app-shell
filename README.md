@@ -1,14 +1,11 @@
-# Astro Starter Kit: Minimal
+# App Shell Starter Project
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Template for a site using Astrojs, TypesScript, Tailwind and DaisyUI using common layouts to help get started on an application quickly.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Layouts
+  - Application Shell
+- Workflows
+  - Deployment
 
 ## 🚀 Project Structure
 
@@ -18,16 +15,15 @@ Inside of your Astro project, you'll see the following folders and files:
 /
 ├── public/
 ├── src/
+│   └── components/
+│       └── Drawer.astro
+│       └── Navbar.astro
+│   └── layouts/
+│       └── shell.astro
 │   └── pages/
 │       └── index.astro
 └── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
