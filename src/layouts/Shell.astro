@@ -1,27 +1,31 @@
 ---
-import "../global.css";
 import Drawer from "@components/Drawer.astro";
 import Navbar from "@components/Navbar.astro";
 ---
 
 <html lang="en" data-theme="light">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>DashGL</title>
-	</head>
-	<body class="drawer min-h-screen lg:drawer-open">
-		<input id="app-drawer" type="checkbox" class="drawer-toggle" />
-		<main class="drawer-content">
-			<!-- Navbar -->
-			<Navbar/>
-			<!-- Content -->
-			<div class="grid lg:grid-cols-4 gap-x-4 gap-y-4 p-4">
-                <slot/>
-			</div>
-		</main>
-		<Drawer/>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>DashGL</title>
+        <style>
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+        </style>
+    </head>
+    <body class="drawer min-h-screen lg:drawer-open">
+        <input id="app-drawer" type="checkbox" class="drawer-toggle" />
+        <main class="drawer-content">
+            <!-- Navbar -->
+            <Navbar />
+            <!-- Content -->
+            <div class="grid lg:grid-cols-4 gap-x-4 gap-y-4 p-4">
+                <slot />
+            </div>
+        </main>
+        <Drawer />
+    </body>
 </html>
