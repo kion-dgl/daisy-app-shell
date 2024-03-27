@@ -1,0 +1,25 @@
+{
+    "roots": [
+        "src"
+    ],
+    "extensions": [
+        ".astro",
+        ".js",
+        ".ts",
+        ".jsx",
+        ".tsx"
+    ],
+    "ignoreDependencies": [
+        "@iconify-json/mdi"
+    ],
+    "ignorePatterns": [
+        "**/node_modules/**"
+    ],
+    "entryPoints": [
+        "src/pages/**/*.astro"
+    ],
+    "alias": {
+        "@components": "./src/components",
+        "@layouts": "./src/layouts"
+    }
+}
