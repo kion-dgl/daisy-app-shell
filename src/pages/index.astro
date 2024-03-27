@@ -1,16 +1,19 @@
 ---
-
+import Shell from "@layouts/Shell.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Shell>
+	<div class="card bg-base-100 shadow lg:col-span-3">
+		<div class="card-body">
+			<h2 class="card-title">Content</h2>
+			<p>lorem ipsum</p>
+		</div>
+	</div>
+
+	<div class="card bg-base-100 shadow">
+		<div class="card-body">
+			<h2 class="card-title">Aside</h2>
+			<p>On this page</p>
+		</div>
+	</div>
+</Shell>
