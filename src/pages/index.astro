@@ -5,8 +5,238 @@ import Shell from "@layouts/Shell.astro";
 <Shell>
 	<div class="card bg-base-100 shadow lg:col-span-3">
 		<div class="card-body">
-			<h2 class="card-title">Content</h2>
-			<p>lorem ipsum</p>
+			<h2 class="card-title justify-between">
+				<span>Users</span>
+				<button class="btn btn-primary" onclick="my_modal_5.showModal()"
+					>Add New</button
+				>
+				<dialog
+					id="my_modal_5"
+					class="modal modal-bottom sm:modal-middle"
+				>
+					<div class="modal-box">
+						<h3 class="font-bold text-lg">Add New User</h3>
+						<p class="py-4 space-y-4">
+							<label
+								class="input input-bordered flex items-center gap-2"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 16 16"
+									fill="currentColor"
+									class="w-4 h-4 opacity-70"
+									><path
+										d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+									></path></svg
+								>
+								<input
+									type="text"
+									class="grow"
+									placeholder="Username"
+								/>
+							</label>
+						</p>
+						<div class="modal-action">
+							<form
+								class="w-full flex justify-between"
+								method="dialog"
+							>
+								<!-- if there is a button in form, it will close the modal -->
+								<button class="btn">Close</button>
+								<button class="btn btn-primary">Add</button>
+							</form>
+						</div>
+					</div>
+				</dialog>
+			</h2>
+			<div class="overflow-x-auto">
+				<table class="table">
+					<!-- head -->
+					<thead>
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" class="checkbox" />
+								</label>
+							</th>
+							<th>Name</th>
+							<th>Job</th>
+							<th>Favorite Color</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- row 1 -->
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" class="checkbox" />
+								</label>
+							</th>
+							<td>
+								<div class="flex items-center gap-3">
+									<div class="avatar">
+										<div
+											class="mask mask-squircle w-12 h-12"
+										>
+											<img
+												src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+												alt="Avatar Tailwind CSS Component"
+											/>
+										</div>
+									</div>
+									<div>
+										<div class="font-bold">
+											Hart Hagerty
+										</div>
+										<div class="text-sm opacity-50">
+											United States
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								Zemlak, Daniel and Leannon
+								<br />
+								<span class="badge badge-ghost badge-sm"
+									>Desktop Support Technician</span
+								>
+							</td>
+							<td>Purple</td>
+							<th>
+								<button class="btn btn-ghost btn-xs"
+									>Delete</button
+								>
+							</th>
+						</tr>
+						<!-- row 2 -->
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" class="checkbox" />
+								</label>
+							</th>
+							<td>
+								<div class="flex items-center gap-3">
+									<div class="avatar">
+										<div
+											class="mask mask-squircle w-12 h-12"
+										>
+											<img
+												src="https://img.daisyui.com/tailwind-css-component-profile-3@56w.png"
+												alt="Avatar Tailwind CSS Component"
+											/>
+										</div>
+									</div>
+									<div>
+										<div class="font-bold">Brice Swyre</div>
+										<div class="text-sm opacity-50">
+											China
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								Carroll Group
+								<br />
+								<span class="badge badge-ghost badge-sm"
+									>Tax Accountant</span
+								>
+							</td>
+							<td>Red</td>
+							<th>
+								<button class="btn btn-ghost btn-xs"
+									>Delete</button
+								>
+							</th>
+						</tr>
+						<!-- row 3 -->
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" class="checkbox" />
+								</label>
+							</th>
+							<td>
+								<div class="flex items-center gap-3">
+									<div class="avatar">
+										<div
+											class="mask mask-squircle w-12 h-12"
+										>
+											<img
+												src="https://img.daisyui.com/tailwind-css-component-profile-4@56w.png"
+												alt="Avatar Tailwind CSS Component"
+											/>
+										</div>
+									</div>
+									<div>
+										<div class="font-bold">
+											Marjy Ferencz
+										</div>
+										<div class="text-sm opacity-50">
+											Russia
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								Rowe-Schoen
+								<br />
+								<span class="badge badge-ghost badge-sm"
+									>Office Assistant I</span
+								>
+							</td>
+							<td>Crimson</td>
+							<th>
+								<button class="btn btn-ghost btn-xs"
+									>Delete</button
+								>
+							</th>
+						</tr>
+						<!-- row 4 -->
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" class="checkbox" />
+								</label>
+							</th>
+							<td>
+								<div class="flex items-center gap-3">
+									<div class="avatar">
+										<div
+											class="mask mask-squircle w-12 h-12"
+										>
+											<img
+												src="https://img.daisyui.com/tailwind-css-component-profile-5@56w.png"
+												alt="Avatar Tailwind CSS Component"
+											/>
+										</div>
+									</div>
+									<div>
+										<div class="font-bold">Yancy Tear</div>
+										<div class="text-sm opacity-50">
+											Brazil
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								Wyman-Ledner
+								<br />
+								<span class="badge badge-ghost badge-sm"
+									>Community Outreach Specialist</span
+								>
+							</td>
+							<td>Indigo</td>
+							<th>
+								<button class="btn btn-ghost btn-xs"
+									>Delete</button
+								>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
