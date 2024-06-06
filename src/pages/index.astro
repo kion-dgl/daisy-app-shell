@@ -1,5 +1,8 @@
 ---
 import Shell from "@layouts/Shell.astro";
+
+import { db, Users } from "astro:db";
+const users = await db.select().from(Users);
 ---
 
 <Shell>
@@ -66,6 +69,53 @@ import Shell from "@layouts/Shell.astro";
 						</tr>
 					</thead>
 					<tbody>
+						{
+							users.map(({ id, name }) => (
+								<tr id={id}>
+									<th>
+										<label>
+											<input
+												type="checkbox"
+												class="checkbox"
+											/>
+										</label>
+									</th>
+									<td>
+										<div class="flex items-center gap-3">
+											<div class="avatar">
+												<div class="mask mask-squircle w-12 h-12">
+													<img
+														src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+														alt="Avatar Tailwind CSS Component"
+													/>
+												</div>
+											</div>
+											<div>
+												<div class="font-bold">
+													{name}
+												</div>
+												<div class="text-sm opacity-50">
+													United States
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										Zemlak, Daniel and Leannon
+										<br />
+										<span class="badge badge-ghost badge-sm">
+											Desktop Support Technician
+										</span>
+									</td>
+									<td>Purple</td>
+									<th>
+										<button class="btn btn-ghost btn-xs">
+											Delete
+										</button>
+									</th>
+								</tr>
+							))
+						}
 						<!-- row 1 -->
 						<tr>
 							<th>
