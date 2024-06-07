@@ -3,6 +3,8 @@ import Shell from "@layouts/Shell.astro";
 
 import { db, Users } from "astro:db";
 const users = await db.select().from(Users);
+
+import AddUser from "@components/AddUser";
 ---
 
 <Shell>
@@ -10,47 +12,7 @@ const users = await db.select().from(Users);
 		<div class="card-body">
 			<h2 class="card-title justify-between">
 				<span>Users</span>
-				<button class="btn btn-primary" onclick="my_modal_5.showModal()"
-					>Add New</button
-				>
-				<dialog
-					id="my_modal_5"
-					class="modal modal-bottom sm:modal-middle"
-				>
-					<div class="modal-box">
-						<h3 class="font-bold text-lg">Add New User</h3>
-						<p class="py-4 space-y-4">
-							<label
-								class="input input-bordered flex items-center gap-2"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 16 16"
-									fill="currentColor"
-									class="w-4 h-4 opacity-70"
-									><path
-										d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
-									></path></svg
-								>
-								<input
-									type="text"
-									class="grow"
-									placeholder="Username"
-								/>
-							</label>
-						</p>
-						<div class="modal-action">
-							<form
-								class="w-full flex justify-between"
-								method="dialog"
-							>
-								<!-- if there is a button in form, it will close the modal -->
-								<button class="btn">Close</button>
-								<button class="btn btn-primary">Add</button>
-							</form>
-						</div>
-					</div>
-				</dialog>
+				<AddUser client:only="preact" />
 			</h2>
 			<div class="overflow-x-auto">
 				<table class="table">
