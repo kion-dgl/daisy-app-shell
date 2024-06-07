@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "/home/kion/Documents/daisy-app-shell",
     "paths": {
       "@components/*": [
         "src/components/*"
@@ -12,6 +12,8 @@
       "@assets/*": [
         "src/assets/*"
       ]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }
