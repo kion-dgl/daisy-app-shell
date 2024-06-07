@@ -17,7 +17,7 @@ const AddUser = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username })
+                body: JSON.stringify({ name: username })
             });
             if (response.ok) {
                 console.log('User added successfully');
