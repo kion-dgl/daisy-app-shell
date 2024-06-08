@@ -34,7 +34,7 @@ const AddUser = () => {
     };
 
     return (
-        <>
+        <div>
             <button class="btn btn-primary" onClick={() => setIsOpen(true)}
             >Add New</button
             >
@@ -75,7 +75,7 @@ const AddUser = () => {
 
                 </div>
             </dialog >
-        </>
+        </div>
     );
 };
 
