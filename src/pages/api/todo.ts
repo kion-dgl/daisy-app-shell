@@ -12,11 +12,8 @@ export const GET: APIRoute = async () => {
 
 export const POST: APIRoute = async ({ request }) => {
     const body = await request.json();
-    console.log('a');    
-    console.log('b');
     await db.insert(Todo).values([
         body
     ])
-    console.log('c');
     return new Response(null, { status: 201 });
 };
