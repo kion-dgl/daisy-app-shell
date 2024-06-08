@@ -2,7 +2,6 @@
 import Shell from "@layouts/Shell.astro";
 import { db, Todo } from "astro:db";
 const tasks = await db.select().from(Todo);
-
 ---
 
 <Shell>
@@ -61,7 +60,13 @@ const tasks = await db.select().from(Todo);
 	<div class="card bg-base-100 shadow">
 		<div class="card-body">
 			<h2 class="card-title">Aside</h2>
-			<p>On this page</p>
+			<form>
+				<label class="input input-bordered flex items-center gap-2">
+					Task
+					<input type="text" class="grow" placeholder="Do Something" />
+				</label>
+			</form>
+			<button class="btn btn-primary">Add Task</button>
 		</div>
 	</div>
 </Shell>
