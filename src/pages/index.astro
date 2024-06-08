@@ -10,6 +10,7 @@ type TodoRowProps = {
 const tasks: TodoRowProps[] = await db.select().from(Todo);
 import TodoForm from "@components/TodoForm.tsx";
 import TodoRow from "@components/TodoRow.tsx";
+
 ---
 
 <Shell>
@@ -33,7 +34,7 @@ import TodoRow from "@components/TodoRow.tsx";
 					<tbody>
 						{
 							tasks.map(({id, task, complete}) => (
-								<TodoRow id={id} task={task} complete={complete} />
+								<TodoRow id={id} task={task} complete={complete} client:load />
 							))
 						}
 					</tbody>

@@ -25,7 +25,7 @@ const TodoRow = (props: TodoRowProps) => {
         <tr>
             <th>
                 <label>
-                    <input type="checkbox" class="checkbox" checked={isCompleted()} disabled />
+                    <input type="checkbox" class="checkbox" />
                 </label>
             </th>
             <td>
