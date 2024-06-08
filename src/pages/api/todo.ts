@@ -1,6 +1,6 @@
 // src/pages/api/todos.ts
 import type { APIRoute } from 'astro';
-import { db, Todo } from "astro:db";
+import { db, Todo, eq } from "astro:db";
 
 
 export const GET: APIRoute = async () => {
@@ -9,6 +9,13 @@ export const GET: APIRoute = async () => {
         headers: { 'Content-Type': 'application/json' },
     });
 };
+
+export const PATCH: APIRoute = async ({ request }) => {
+    const body = await request.json();
+    await db.update(Todo).set({ complete: true }).where(eq(Todo.id, body.id));
+    return new Response(null, { status: 201 });
+};
+
 
 export const POST: APIRoute = async ({ request }) => {
     const body = await request.json();

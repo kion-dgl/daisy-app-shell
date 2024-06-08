@@ -1,8 +1,15 @@
 ---
 import Shell from "@layouts/Shell.astro";
 import { db, Todo } from "astro:db";
-const tasks = await db.select().from(Todo);
+
+type TodoRowProps = {
+    id: number;
+    task: string;
+    complete: boolean;
+};
+const tasks: TodoRowProps[] = await db.select().from(Todo);
 import TodoForm from "@components/TodoForm.tsx";
+import TodoRow from "@components/TodoRow.tsx";
 ---
 
 <Shell>
@@ -25,31 +32,8 @@ import TodoForm from "@components/TodoForm.tsx";
 					</thead>
 					<tbody>
 						{
-							tasks.map(({ id, task }) => (
-								<tr id={id}>
-									<th>
-										<label>
-											<input
-												type="checkbox"
-												class="checkbox"
-											/>
-										</label>
-									</th>
-									<td>
-										<div class="flex items-center gap-3">
-											<div>
-												<div class="font-bold">
-													{task}
-												</div>
-											</div>
-										</div>
-									</td>
-									<th>
-										<button class="btn btn-ghost btn-xs">
-											Complete
-										</button>
-									</th>
-								</tr>
+							tasks.map(({id, task, complete}) => (
+								<TodoRow id={id} task={task} complete={complete} />
 							))
 						}
 					</tbody>

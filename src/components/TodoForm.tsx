@@ -23,7 +23,7 @@ const TodoForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form class='space-y-4' onSubmit={handleSubmit}>
             <label class="input input-bordered flex items-center gap-2">
                 Task
                 <input
@@ -34,7 +34,7 @@ const TodoForm = () => {
                     onInput={(e) => setTask(e.currentTarget.value)}
                 />
             </label>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary w-full">
                 Add Task
             </button>
         </form>
