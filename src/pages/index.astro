@@ -1,12 +1,60 @@
 ---
 import Shell from "@layouts/Shell.astro";
+import { db, Todo } from "astro:db";
+const tasks = await db.select().from(Todo);
+
 ---
 
 <Shell>
 	<div class="card bg-base-100 shadow lg:col-span-3">
 		<div class="card-body">
-			<h2 class="card-title">Content</h2>
-			<p>lorem ipsum</p>
+			<h2 class="card-title">Todo List</h2>
+			<div class="overflow-x-auto">
+				<table class="table">
+					<!-- head -->
+					<thead>
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" class="checkbox" />
+								</label>
+							</th>
+							<th>Name</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							tasks.map(({ id, task }) => (
+								<tr id={id}>
+									<th>
+										<label>
+											<input
+												type="checkbox"
+												class="checkbox"
+											/>
+										</label>
+									</th>
+									<td>
+										<div class="flex items-center gap-3">
+											<div>
+												<div class="font-bold">
+													{task}
+												</div>
+											</div>
+										</div>
+									</td>
+									<th>
+										<button class="btn btn-ghost btn-xs">
+											Complete
+										</button>
+									</th>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
