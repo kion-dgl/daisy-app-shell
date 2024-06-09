@@ -2,13 +2,14 @@
 import Shell from "@layouts/Shell.astro";
 import { db, Todo } from "astro:db";
 import AddTask from "@components/AddTask";
-
+import TodoTable from "@components/TodoTable";
 type TodoRowProps = {
 	id: number;
 	task: string;
 	complete: boolean;
 };
-const tasks: TodoRowProps[] = await db.select().from(Todo);
+const t = await db.select().from(Todo);
+const tasks: TodoRowProps[] = t as unknown as TodoRowProps[];
 ---
 
 <Shell>
@@ -16,59 +17,7 @@ const tasks: TodoRowProps[] = await db.select().from(Todo);
 		<div class="card-body">
 			<h2 class="card-title">Todo List</h2>
 			<div class="overflow-x-auto">
-				<table class="table">
-					<!-- head -->
-					<thead>
-						<tr>
-							<th>
-								<label>
-									<input type="checkbox" class="checkbox" />
-								</label>
-							</th>
-							<th>Name</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						{
-							tasks.map(({ task, complete }) => (
-								<tr>
-									<th>
-										<label>
-											<input
-												type="checkbox"
-												class="checkbox"
-											/>
-										</label>
-									</th>
-									<td>
-										<div class="flex items-center gap-3">
-											<div>
-												<div class="font-bold">
-													{task}
-												</div>
-											</div>
-										</div>
-									</td>
-									<th>
-										{complete ? (
-											<button
-												class="btn btn-ghost btn-xs disabled:opacity-50"
-												disabled
-											>
-												Completed
-											</button>
-										) : (
-											<button class="btn btn-primary btn-xs">
-												Set Complete
-											</button>
-										)}
-									</th>
-								</tr>
-							))
-						}
-					</tbody>
-				</table>
+				<TodoTable tasks={tasks} client:load/>
 			</div>
 		</div>
 	</div>
