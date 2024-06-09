@@ -1,19 +1,95 @@
 ---
 import Shell from "@layouts/Shell.astro";
+import { db, Todo } from "astro:db";
+
+type TodoRowProps = {
+	id: number;
+	task: string;
+	complete: boolean;
+};
+const tasks: TodoRowProps[] = await db.select().from(Todo);
 ---
 
 <Shell>
 	<div class="card bg-base-100 shadow lg:col-span-3">
 		<div class="card-body">
-			<h2 class="card-title">Content</h2>
-			<p>lorem ipsum</p>
+			<h2 class="card-title">Todo List</h2>
+			<div class="overflow-x-auto">
+				<table class="table">
+					<!-- head -->
+					<thead>
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" class="checkbox" />
+								</label>
+							</th>
+							<th>Name</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							tasks.map(({ task, complete }) => (
+								<tr>
+									<th>
+										<label>
+											<input
+												type="checkbox"
+												class="checkbox"
+											/>
+										</label>
+									</th>
+									<td>
+										<div class="flex items-center gap-3">
+											<div>
+												<div class="font-bold">
+													{task}
+												</div>
+											</div>
+										</div>
+									</td>
+									<th>
+										{complete ? (
+											<button
+												class="btn btn-ghost btn-xs disabled:opacity-50"
+												disabled
+											>
+												Completed
+											</button>
+										) : (
+											<button
+												class="btn btn-primary btn-xs"
+											>
+												Set Complete
+											</button>
+										)}
+									</th>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
 	<div class="card bg-base-100 shadow">
 		<div class="card-body">
 			<h2 class="card-title">Aside</h2>
-			<p>On this page</p>
+			<form class="space-y-4">
+				<label class="input input-bordered flex items-center gap-2">
+					Task
+					<input
+						type="text"
+						class="grow"
+						placeholder="Do Something"
+					/>
+				</label>
+				<button type="submit" class="btn btn-primary w-full">
+					Add Task
+				</button>
+			</form>
 		</div>
 	</div>
 </Shell>
