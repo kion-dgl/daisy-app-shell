@@ -2,7 +2,7 @@ import { defineDb, defineTable, column } from 'astro:db';
 
 const Todo = defineTable({
   columns: {
-    id: column.text({ primaryKey: true, autoIncrement: true }),
+    id: column.number({ primaryKey: true, autoIncrement: true }),
     task: column.text(),
     complete: column.boolean({default: false})
   }

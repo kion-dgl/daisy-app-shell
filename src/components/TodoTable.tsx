@@ -38,8 +38,8 @@ const TodoTable = (props: { tasks: TodoRowProps[] }) => {
             </thead>
             <tbody>
                 {
-                    tasks.map(({ task, complete }, index) => (
-                        <tr key={`task-${index}`}>
+                    tasks.map(({ id, task, complete }) => (
+                        <tr key={`task-${id}`}>
                             <th>
                                 <label>
                                     <input
