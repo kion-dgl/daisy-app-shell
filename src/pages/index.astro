@@ -1,6 +1,7 @@
 ---
 import Shell from "@layouts/Shell.astro";
 import { db, Todo } from "astro:db";
+import AddTask from "@components/AddTask";
 
 type TodoRowProps = {
 	id: number;
@@ -58,9 +59,7 @@ const tasks: TodoRowProps[] = await db.select().from(Todo);
 												Completed
 											</button>
 										) : (
-											<button
-												class="btn btn-primary btn-xs"
-											>
+											<button class="btn btn-primary btn-xs">
 												Set Complete
 											</button>
 										)}
@@ -77,19 +76,7 @@ const tasks: TodoRowProps[] = await db.select().from(Todo);
 	<div class="card bg-base-100 shadow">
 		<div class="card-body">
 			<h2 class="card-title">Aside</h2>
-			<form class="space-y-4">
-				<label class="input input-bordered flex items-center gap-2">
-					Task
-					<input
-						type="text"
-						class="grow"
-						placeholder="Do Something"
-					/>
-				</label>
-				<button type="submit" class="btn btn-primary w-full">
-					Add Task
-				</button>
-			</form>
+			<AddTask client:load />
 		</div>
 	</div>
 </Shell>
