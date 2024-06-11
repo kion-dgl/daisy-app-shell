@@ -3,7 +3,7 @@ import { defineAction, z } from "astro:actions";
 
 export const server = {
     addTask: defineAction({
-        accept: 'form',
+        // accept: 'form',
         input: z.object({ task: z.string() }),
         handler: async ({ task }) => {
             // add task to db

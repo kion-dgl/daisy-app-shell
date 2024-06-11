@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { actions } from 'astro:actions';
 
 const TodoForm = () => {
     const [task, setTask] = useState('');
@@ -6,6 +7,8 @@ const TodoForm = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         if (task.trim() === '') return;
+
+        await actions.addTask({ task });
 
         const response = await fetch('/api/todo', {
             method: 'POST',

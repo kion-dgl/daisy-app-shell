@@ -20,6 +20,7 @@ const TodoTable = (props: { tasks: TodoRowProps[] }) => {
             },
             body: JSON.stringify({ id }),
         });
+        
         setTasks(tasks.map((t) => (t.id === id ? { ...t, complete: true } : t)));
     };
 

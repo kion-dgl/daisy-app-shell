@@ -11,10 +11,10 @@ export default defineConfig({
   base: '/daisy-app-shell',
   integrations: [tailwind(), react(), db()],
   output: "server",
+  adapter: node({
+    mode: "standalone"
+  }),
   experimental: {
     actions: true,
   },
-  adapter: node({
-    mode: "standalone"
-  })
 });
