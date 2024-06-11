@@ -8,9 +8,14 @@ export const server = {
         handler: async ({ task }) => {
             // add task to db
             console.log(task);
-            await db.insert(Todo).values([
+            const newTask = await db.insert(Todo).values(
                 { task }
-            ])
+            ).returning({
+                id: Todo.id,
+                task: Todo.task,
+                complete: Todo.complete
+            });
+            return newTask;
         },
     })
 };
