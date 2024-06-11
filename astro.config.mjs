@@ -16,4 +16,9 @@ export default defineConfig({
   experimental: {
     actions: true,
   },
+  vite: {
+    optimizeDeps: {
+      exclude: ["astro:db"]
+    }
+  }
 });

@@ -8,7 +8,23 @@ const Todo = defineTable({
   }
 })
 
-// https://astro.build/db/config
+const Users = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    username: column.text({ unique: true }),
+    password: column.text()
+  }
+})
+
+const Sessions = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    //userId: column.number({ references: () => Users.columns.id }),
+    userId: column.text(),
+    expiresAt: column.date()
+  }
+})
+
 export default defineDb({
-  tables: { Todo }
+  tables: { Todo, Users, Sessions }
 });
