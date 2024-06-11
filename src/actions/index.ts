@@ -1,5 +1,5 @@
 import { defineAction, z } from "astro:actions";
-// import { db, Todo } from "astro:db";
+import { db, Todo } from "astro:db";
 
 export const server = {
     addTask: defineAction({
@@ -8,6 +8,9 @@ export const server = {
         handler: async ({ task }) => {
             // add task to db
             console.log(task);
+            await db.insert(Todo).values([
+                { task }
+            ])
         },
     })
 };

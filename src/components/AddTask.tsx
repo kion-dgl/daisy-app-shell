@@ -6,23 +6,9 @@ const TodoForm = () => {
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        if (task.trim() === '') return;
-
+        if (task.trim() === '')
+            return;
         await actions.addTask({ task });
-
-        const response = await fetch('/api/todo', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ task })
-        });
-
-        if (response.ok) {
-            setTask(''); // Clear the input after submission
-        } else {
-            console.error('Failed to add user');
-        }
     }
 
     return (
@@ -33,6 +19,7 @@ const TodoForm = () => {
                     type="text"
                     className="grow"
                     placeholder="Do Something"
+                    name='task'
                     value={task}
                     onInput={(e) => setTask(e.currentTarget.value)}
                 />
