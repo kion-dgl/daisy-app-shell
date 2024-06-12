@@ -1,4 +1,9 @@
 ---
+const user = Astro.locals.user;
+if (!user) {
+	return Astro.redirect("/");
+}
+
 import Shell from "@layouts/Shell.astro";
 import { db, Todo } from "astro:db";
 import AddTask from "@components/AddTask";
