@@ -108,6 +108,7 @@ export const server = {
             const session = await lucia.createSession(user.id, {});
             const sessionCookie = lucia.createSessionCookie(session.id);
             ctx.cookies.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+            ctx.redirect("/app");
         }
     })
 };
