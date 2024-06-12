@@ -1,9 +1,12 @@
 import type { ActionAPIContext } from "astro/actions/runtime/store.js";
 import { ActionError, defineAction, z } from "astro:actions";
-import { db, Todo, Sessions, Users } from "astro:db";
+import { db, Todo, Sessions, Users, eq } from "astro:db";
 import { Lucia, generateId } from "lucia";
-import { genSaltSync, hashSync } from "bcrypt-ts";
+import { genSaltSync, hashSync, compareSync } from "bcrypt-ts";
 import { AstroDBAdapter } from "lucia-adapter-astrodb";
+
+
+
 
 const salt = genSaltSync(10);
 
@@ -15,7 +18,7 @@ interface DatabaseUser {
 
 const adapter = new AstroDBAdapter(db, Sessions, Users);
 
-const lucia = new Lucia(adapter, {
+export const lucia = new Lucia(adapter, {
     sessionCookie: { attributes: { secure: false } },
     getUserAttributes: (attributes) => ({
         username: attributes.username,
@@ -69,8 +72,8 @@ export const server = {
 
             const userId = generateId(15);
             const hashedPassword = hashSync(password, salt);
-            
-            
+
+
             await db.insert(Users).values({
                 id: userId,
                 username,
@@ -81,5 +84,33 @@ export const server = {
             const sessionCookie = lucia.createSessionCookie(session.id);
             ctx.cookies.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
         },
+    }),
+    signIn: defineAction({
+        // accept: 'form',
+        input: z.object({
+            username: z.string(),
+            password: z.string()
+        }),
+        handler: async ({ username, password }, ctx: ActionAPIContext) => {
+
+            const user = await db.select().from(Users).where(eq(Users.username, username)).get();
+            console.log(user);
+            if (!user) {
+                throw new ActionError({
+                    code: "UNAUTHORIZED"
+                });
+            }
+
+            const isValid = await compareSync(password, user.password);
+            if (!isValid) {
+                throw new ActionError({
+                    code: "UNAUTHORIZED"
+                });
+            }
+
+            const session = await lucia.createSession(user.id, {});
+            const sessionCookie = lucia.createSessionCookie(session.id);
+            ctx.cookies.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+        }
     })
 };

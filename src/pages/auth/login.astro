@@ -1,17 +1,29 @@
 ---
+import Page from "@layouts/Page.astro";
 import LoginForm from "@components/auth/LoginForm";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Lucia example</title>
-	</head>
-	<body>
-		<h1>Sign in</h1>
-		<LoginForm client:load/>
-		<a href="/auth/signup">Create an account</a>
-	</body>
-</html>
+<Page>
+	<section
+		class="container mx-auto h-screen flex flex-col justify-center items-center"
+	>
+		<div class="card lg:card-side bg-base-100 shadow-xl">
+			<figure>
+				<img
+					src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+					alt="Album"
+				/>
+			</figure>
+			<div class="card-body">
+				<h2 class="card-title">Sign In</h2>
+
+				<LoginForm client:load />
+				<div class="card-actions justify-end">
+					<a href="/auth/signup" class="btn btn-ghost"
+						>Create an account</a
+					>
+				</div>
+			</div>
+		</div>
+	</section>
+</Page>
