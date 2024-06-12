@@ -1,4 +1,12 @@
-import { db, Todo } from 'astro:db';
+import { db, Todo, Users } from 'astro:db';
+import { genSaltSync, hashSync } from 'bcrypt-ts';
+import { generateId } from 'lucia';
+
+await db.insert(Users).values({
+	id: generateId(15),
+	username: 'admin',
+	password: hashSync('password', genSaltSync(10)),
+});
 
 // https://astro.build/db/seed
 export default async function seed() {
@@ -12,5 +20,5 @@ export default async function seed() {
 		{ task: 'Watch TV' },
 		{ task: 'Sleep' },
 		{ task: 'Read a book' },
-	  ])
+	])
 }

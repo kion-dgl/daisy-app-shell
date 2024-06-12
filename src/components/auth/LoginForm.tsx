@@ -2,8 +2,8 @@ import { useState, type FormEvent } from 'react'
 import { actions } from 'astro:actions';
 
 const LoginForm = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('admin');
+    const [password, setPassword] = useState('password');
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();

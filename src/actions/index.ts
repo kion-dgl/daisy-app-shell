@@ -5,9 +5,6 @@ import { Lucia, generateId } from "lucia";
 import { genSaltSync, hashSync, compareSync } from "bcrypt-ts";
 import { AstroDBAdapter } from "lucia-adapter-astrodb";
 
-
-
-
 const salt = genSaltSync(10);
 
 interface DatabaseUser {
