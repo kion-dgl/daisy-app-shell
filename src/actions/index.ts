@@ -33,11 +33,12 @@ export const server = {
     addTask: defineAction({
         // accept: 'form',
         input: z.object({ task: z.string() }),
-        handler: async ({ task }) => {
+        handler: async ({ task }, ctx: ActionAPIContext) => {
             // add task to db
-            console.log(task);
+            
+            const userId = "placeholder";
             const newTask = await db.insert(Todo).values(
-                { task }
+                { task, userId}
             ).get();
             return newTask;
         },

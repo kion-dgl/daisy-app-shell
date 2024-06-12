@@ -1,12 +1,5 @@
 import { defineDb, defineTable, column } from 'astro:db';
 
-const Todo = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true, autoIncrement: true }),
-    task: column.text(),
-    complete: column.boolean({default: false})
-  }
-})
 
 const Users = defineTable({
   columns: {
@@ -22,6 +15,15 @@ const Sessions = defineTable({
     //userId: column.number({ references: () => Users.columns.id }),
     userId: column.text(),
     expiresAt: column.date()
+  }
+})
+
+const Todo = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true, autoIncrement: true }),
+    task: column.text(),
+    complete: column.boolean({default: false}),
+    userId: column.text(),
   }
 })
 
