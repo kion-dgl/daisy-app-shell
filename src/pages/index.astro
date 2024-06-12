@@ -1,6 +1,6 @@
 ---
 import Page from "@layouts/Page.astro";
-import Header from "@components/landing/Header";
+import Header from "@components/landing/Header.astro";
 import Hero from "@components/landing/Hero.astro";
 import Services from "@components/landing/Services.astro";
 import Testimonial from "@components/landing/Testimonial.astro";
@@ -9,7 +9,7 @@ import Footer from "@components/landing/Footer.astro";
 ---
 
 <Page>
-    <Header client:load />
+    <Header />
     <Hero />
     <Services />
     <Testimonial />
