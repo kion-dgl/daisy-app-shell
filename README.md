@@ -1,11 +1,12 @@
 # App Shell Starter Project
 
 Template for a site using Astrojs, TypesScript, Tailwind and DaisyUI using common layouts to help get started on an application quickly.
+The template is built as a stand-alone web server with a landing page, authentication and a simple authenticated Todo application for logged in users
 
 - Layouts
   - Application Shell
-- Workflows
-  - Deployment
+  - Landng Page
+  - Authentication
 
 ## 🚀 Project Structure
 
