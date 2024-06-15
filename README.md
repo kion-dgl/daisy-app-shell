@@ -26,6 +26,15 @@ Inside of your Astro project, you'll see the following folders and files:
 └── package.json
 ```
 
+![DaisyUI Landing Page](https://github.com/kion-dgl/daisy-app-shell/assets/25621780/8aa5d1fa-3215-4e9f-b758-bf5e190ce13c)
+
+![DaisyUI Login Page](https://github.com/kion-dgl/daisy-app-shell/assets/25621780/0fc6a6ff-675e-4c08-a203-fcfc6a68b564)
+
+![DaisyUI Application Layout](https://github.com/kion-dgl/daisy-app-shell/assets/25621780/9d3b2373-4ead-4304-9517-e8147b2689ac)
+
+
+
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
